@@ -17,7 +17,7 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       // If last step, show final screen
-      if (controller.isLastStep) {
+      if(controller.isLastStep) {
         return FinalScreen(controller: controller);
       }
 
