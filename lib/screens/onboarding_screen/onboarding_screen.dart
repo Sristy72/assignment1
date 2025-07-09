@@ -1,4 +1,4 @@
-import 'package:assignment1/widgets/schedule_button.dart';
+import 'package:assignment1/screens/final_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/onboarding_controller.dart';
@@ -6,7 +6,6 @@ import '../../widgets/appbar.dart';
 import '../../widgets/next_button.dart';
 import '../../widgets/option_button.dart';
 import '../../widgets/step_progress.dart';
-import '../home_screen.dart';
 
 
 class OnboardingScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class OnboardingScreen extends StatelessWidget {
     return Obx(() {
       // If last step, show final screen
       if (controller.isLastStep) {
-        return finalScreen();
+        return FinalScreen(controller: controller);
       }
 
       final question = controller.questions[controller.currentStep.value];
@@ -72,47 +71,7 @@ class OnboardingScreen extends StatelessWidget {
   }
 
   // Final screen
-  Widget finalScreen() {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Here’s your personalized 7-day reset plan.",textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
 
-              const SizedBox(height: 20),
-
-              Text( textAlign: TextAlign.center,'Each day includes guided tasks to help you feel better, one moment at a time.', style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 20),
-              ScheduleButton(
-                text: "View Today’s Schedule",
-                onTap: () => Get.to(() => const HomeScreen()),
-              ),
-              const SizedBox(height: 10),
-              TextButton(
-                onPressed: () {
-                  // regenerate plan
-                  controller.currentStep.value = 0;
-                  controller.selectedOptions.value = List.filled(5, -1);
-                },
-                child: const Text(
-                  "Regenerate your plan",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 19,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.black,      // optional: underline color
-                    decorationThickness: 1.5,           // optional: thickness of underline
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
+
+

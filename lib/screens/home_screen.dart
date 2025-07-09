@@ -1,3 +1,4 @@
+import 'package:assignment1/widgets/day_tracker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -27,14 +28,16 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 10,),
               const Text("Let’s take it one step at a time.", style: TextStyle(fontSize: 18),),
           
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
+
+              DayTracker(),
               
               Text('Time-based Routine Example:', style: TextStyle(fontSize: 20),),
               SizedBox(height: 20,),
           
               // example card
               Container(
-                height: 450,
+                //height: 450,
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
