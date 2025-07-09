@@ -1,4 +1,5 @@
 import 'package:assignment1/screens/final_screen.dart';
+import 'package:assignment1/widgets/schedule_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/onboarding_controller.dart';
@@ -57,10 +58,12 @@ class OnboardingScreen extends StatelessWidget {
                   },
                 ),
               ),
+
+              controller.currentStep.value == controller.questions.length - 1?
+                  ScheduleButton(text: "Generate My Routine", onTap: controller.nextStep):
+
               NextButton(
-                text: controller.currentStep.value == controller.questions.length - 1
-                    ? "Generate My Routine"
-                    : "Next",
+                text: "Next",
                 onTap: controller.nextStep,
               ),
             ],
